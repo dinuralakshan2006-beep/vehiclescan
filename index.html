@@ -1,204 +1,122 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="si">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050b18">
-<title>VehicleScan — OBD-II Diagnostic Tool</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="TECH HUB LK - Technical College students සඳහා Sinhala + English technical learning hub.">
+<link rel="manifest" href="manifest.json">
+<title>TECH HUB LK | Technical Learning Hub</title>
 <style>
-:root{--bg:#050b18;--panel:#0b1426;--panel2:#101d34;--line:#223451;--text:#edf4ff;--muted:#9eb0ca;--blue:#1769ff;--cyan:#00c8ff;--green:#25d695;--red:#ff5577;--amber:#ffbd4a}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% 0%,#10264b 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:12px;padding:12px 16px;background:linear-gradient(100deg,var(--blue),#4a42ff);color:white;font-weight:700;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#17253d;border:1px solid var(--line)}.danger{background:#512036;border:1px solid #74324c}.wrap{max-width:1180px;margin:auto;padding:18px}.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);padding:12px 0 18px}.brand{font-weight:900;font-size:22px;letter-spacing:-.6px}.brand b{color:var(--cyan)}.tag{color:var(--muted);font-size:12px}.hero{padding:30px 0 20px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.05;margin:10px 0}.hero p{color:var(--muted);max-width:650px}.heroArt{min-height:190px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#10274a,#071020 60%);display:grid;place-items:center;font-size:88px;position:relative;overflow:hidden}.heroArt:after{content:"OBD-II • LIVE DATA • DTC";position:absolute;bottom:18px;font-size:11px;letter-spacing:2px;color:#75caff}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(160deg,rgba(15,29,51,.96),rgba(7,15,29,.98));border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0}.card h2{font-size:18px;margin:0 0 12px}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}.field label{font-size:12px;color:var(--muted)}input,select{width:100%;background:#050d1b;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.status{padding:10px 12px;border-radius:10px;background:#0a2031;color:#a6eaff;font-size:13px;margin:10px 0}.status.good{background:#0b2c26;color:#80f0c7}.status.bad{background:#321725;color:#ffb2c1}.status.warn{background:#302613;color:#ffe0a0}.small{font-size:12px;color:var(--muted)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.metric{background:#071020;border:1px solid var(--line);padding:13px;border-radius:13px}.metric strong{display:block;font-size:24px;color:#fff}.metric span{font-size:12px;color:var(--muted)}.result{margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:12px;background:#071020;white-space:pre-wrap;overflow-wrap:anywhere}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 9px;color:var(--muted);font-size:11px}.dtc{padding:10px;border-bottom:1px solid var(--line)}.dtc:last-child{border-bottom:0}.dtc strong{color:var(--amber);margin-right:8px}.footer{padding:24px 0;color:var(--muted);font-size:12px}.wide{grid-column:1/-1}.hidden{display:none!important}a{color:#78baff}.list{padding-left:18px;color:var(--muted)}@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:22px}.heroArt{min-height:125px;font-size:58px}.grid{grid-template-columns:1fr}.wrap{padding:12px}.nav{align-items:flex-start}.metrics{grid-template-columns:repeat(3,1fr)}.metric{padding:9px}.metric strong{font-size:20px}} 
+:root{--bg:#07111f;--panel:#101d30;--panel2:#14243a;--text:#eef5ff;--muted:#9fb0c7;--accent:#38bdf8;--accent2:#34d399;--line:#263952;--warn:#fbbf24}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#07111f,#0a1526 55%,#07111f);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{max-width:1000px;margin:auto;padding:14px 14px 90px}
+header{display:flex;align-items:center;gap:12px;padding:12px 0 18px}.logo{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#38bdf8,#34d399);color:#06111e;font-size:25px;font-weight:900;box-shadow:0 8px 25px #38bdf833}
+.brand h1{font-size:21px;margin:0;letter-spacing:.5px}.brand p{margin:1px 0 0;color:var(--muted);font-size:12px}.pill{margin-left:auto;border:1px solid var(--line);color:var(--accent2);border-radius:99px;padding:5px 9px;font-size:11px}
+.hero{padding:22px;border:1px solid #25425e;border-radius:24px;background:radial-gradient(circle at 95% 5%,#164e6380,transparent 38%),linear-gradient(140deg,#10233b,#0c1829);overflow:hidden}
+.hero small{color:var(--accent2);font-weight:700;letter-spacing:1px}.hero h2{font-size:clamp(25px,6vw,36px);line-height:1.15;margin:8px 0}.hero p{color:#b7c7db;margin:0 0 18px}.searchrow{display:flex;gap:8px}.searchrow input{min-width:0;flex:1}.field,input,select,textarea{background:#071321;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px;width:100%;outline:none}.field:focus,input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+.btn{border:0;border-radius:12px;padding:11px 14px;background:var(--accent);color:#04111e;font-weight:800}.btn.secondary{background:#1c3048;color:var(--text);border:1px solid var(--line)}.btn.green{background:var(--accent2)}.btn.small{padding:7px 10px;font-size:13px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:8px;margin:26px 0 12px}.section-head h2{font-size:19px;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:linear-gradient(150deg,#122239,#0d192b);border:1px solid var(--line);border-radius:17px;padding:15px;min-width:0}.card .emoji{font-size:25px}.card h3{font-size:15px;margin:7px 0 3px}.card p{font-size:12px;color:var(--muted);margin:0 0 12px}.card button{width:100%}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:2px 0 8px}.chip{white-space:nowrap;border:1px solid var(--line);background:#0c1929;color:var(--muted);padding:8px 12px;border-radius:99px}.chip.active{background:#123b53;border-color:var(--accent);color:#dff7ff}
+.result{border-bottom:1px solid var(--line);padding:12px 0}.result:last-child{border:0}.result h3{font-size:15px;margin:0 0 4px}.result p{margin:0;color:#bfccdc;font-size:13px;white-space:pre-wrap}.tag{display:inline-block;border:1px solid #2c4964;color:#7dd3fc;border-radius:7px;padding:2px 6px;font-size:10px;margin-bottom:5px}
+.hide{display:none!important}.muted{color:var(--muted)}.stack{display:grid;gap:10px}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.notice{background:#2a2515;border:1px solid #665222;border-radius:12px;padding:11px;color:#fce7a5;font-size:12px}
+nav{position:fixed;z-index:10;bottom:0;left:0;right:0;padding:8px 8px calc(8px + env(safe-area-inset-bottom));background:#08111fea;backdrop-filter:blur(18px);border-top:1px solid var(--line);display:flex;justify-content:center;gap:5px}
+nav button{flex:1;max-width:170px;border:0;background:transparent;color:var(--muted);padding:7px 2px;border-radius:11px;font-size:11px}nav button span{display:block;font-size:20px}nav button.active{color:var(--accent);background:#123047}
+.panel{margin-top:20px}.empty{padding:20px;text-align:center;color:var(--muted)}footer{text-align:center;color:#70839b;font-size:11px;padding:28px 0 8px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.wrap{padding:22px 22px 90px}.hero{padding:30px}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="nav"><div><div class="brand">🚘 Vehicle<b>Scan</b></div><div class="tag">OBD-II Diagnostic Dashboard</div></div><span class="pill">BETA • Local browser tool</span></header>
-  <section class="hero">
-    <div><div class="eyebrow">Vehicle diagnostics assistant</div><h1>Check your car.<br><span style="color:var(--cyan)">Understand the codes.</span></h1><p>Connect a compatible Bluetooth Low Energy (BLE) OBD-II adapter to read supported live data and diagnostic trouble codes. You can also look up a VIN and search common codes.</p><div class="row"><button id="connectBtn" onclick="connectOBD()">Connect BLE OBD-II</button><button class="secondary" onclick="disconnectOBD()">Disconnect</button></div><div id="btStatus" class="status warn">Not connected. Real diagnostics require a compatible BLE adapter and a supported browser.</div></div>
-    <div class="heroArt" aria-label="car diagnostics illustration">🚘</div>
-  </section>
-  <main class="grid">
-    <section class="card">
-      <h2>01 / Live vehicle data</h2>
-      <div class="small">Values are read from the adapter only while connected. Unsupported PIDs may show “—”.</div>
-      <div class="metrics">
-        <div class="metric"><strong id="rpm">—</strong><span>RPM</span></div>
-        <div class="metric"><strong id="speed">—</strong><span>Speed km/h</span></div>
-        <div class="metric"><strong id="coolant">—</strong><span>Coolant °C</span></div>
-      </div>
-      <div class="metrics">
-        <div class="metric"><strong id="load">—</strong><span>Engine load %</span></div>
-        <div class="metric"><strong id="throttle">—</strong><span>Throttle %</span></div>
-        <div class="metric"><strong id="protocol">—</strong><span>Adapter status</span></div>
-      </div>
-      <div class="row" style="margin-top:12px"><button id="liveBtn" onclick="startLive()" disabled>Start live readings</button><button id="stopBtn" class="secondary" onclick="stopLive()" disabled>Stop</button></div>
-      <div id="liveStatus" class="small" style="margin-top:10px">No live data requested.</div>
-    </section>
-    <section class="card">
-      <h2>02 / Read diagnostic trouble codes</h2>
-      <p class="small">Reads generic powertrain DTCs using OBD-II service 03. It does not scan every manufacturer-specific module.</p>
-      <button id="dtcBtn" onclick="readDTCs()" disabled>Read fault codes</button>
-      <div id="dtcResult" class="result">Connect an adapter to read real codes. No vehicle data has been read yet.</div>
-      <div class="small" style="margin-top:8px">Do not use this page while driving. Do not clear codes based only on a web tool.</div>
-    </section>
-    <section class="card">
-      <h2>03 / VIN decoder</h2>
-      <p class="small">Uses the public NHTSA vPIC API. Coverage varies, especially for vehicles not intended for the US market.</p>
-      <div class="field"><label for="vin">VIN (usually 17 characters)</label><input id="vin" maxlength="17" placeholder="Enter VIN, no spaces" autocapitalize="characters"></div>
-      <div class="field"><label for="vinYear">Model year (optional)</label><input id="vinYear" inputmode="numeric" placeholder="e.g. 2020" maxlength="4"></div>
-      <button onclick="decodeVIN()">Decode VIN</button>
-      <div id="vinResult" class="result">VIN results will appear here. This is an online lookup, not a scan of the vehicle ECU.</div>
-    </section>
-    <section class="card">
-      <h2>04 / Search a fault code</h2>
-      <div class="field"><label for="codeInput">OBD-II code</label><input id="codeInput" placeholder="e.g. P0301" maxlength="5" autocapitalize="characters"></div>
-      <button onclick="lookupCode()">Explain code</button>
-      <div id="codeResult" class="result">Enter a code to see a basic explanation. Meanings can vary by manufacturer.</div>
-      <div class="small" style="margin-top:8px">The explanation is general guidance, not a confirmed diagnosis.</div>
-    </section>
-    <section class="card wide">
-      <h2>Connection and safety notes</h2>
-      <ul class="list">
-        <li>This prototype supports common BLE UART-style adapters using Nordic UART (NUS), FFE0/FFE1 or FFF0/FFF1 services. Many ELM327 adapters use Classic Bluetooth or a proprietary profile and will not connect here.</li>
-        <li>Web Bluetooth requires HTTPS and is not supported by every browser. iPhone Safari/Chrome generally cannot connect to BLE from a webpage; use a supported Android browser or a compatible iOS BLE browser such as Bluefy, if available.</li>
-        <li>OBD-II generic data is not a full professional scan. ABS, airbag, transmission and manufacturer-specific modules may require dedicated equipment/software.</li>
-        <li>Never work under a vehicle supported only by a jack. Keep the car parked, parking brake on, and follow adapter/vehicle instructions.</li>
-      </ul>
-    </section>
-  </main>
-  <footer class="footer">VehicleScan is an independent demo tool. It does not guarantee fault interpretation, vehicle compatibility, or repair advice. Verify important results with a qualified technician.</footer>
+<header><div class="logo">TH</div><div class="brand"><h1>TECH HUB LK</h1><p>Technical Learning • Sinhala + English</p></div><div class="pill">BETA 1.0</div></header>
+<section id="home" class="page">
+<div class="hero"><small>LEARN • REPAIR • BUILD</small><h2>Technical දේවල්<br>එකම තැනකින්.</h2><p>Automobile, Electrical, Electronics, ICT සහ තවත් technical fields ගැන ඉගෙනගන්න.</p><div class="searchrow"><input id="mainSearch" placeholder="Search: P0300, Ohm's law, EFI..." aria-label="Search technical topics"><button class="btn" onclick="doSearch()">Search</button></div></div>
+<div class="section-head"><h2>Technical Categories</h2><p>අංශයක් තෝරන්න</p></div><div class="grid" id="categoryGrid"></div>
+<div class="section-head"><h2>Quick Tools</h2><p>ගණනය කර බලන්න</p></div><div class="grid four">
+<div class="card"><div class="emoji">⚡</div><h3>Ohm's Law</h3><p>Voltage / Current / Resistance</p><button class="btn secondary small" onclick="showPage('tools')">Open</button></div>
+<div class="card"><div class="emoji">🔧</div><h3>Fault Finder</h3><p>Common automotive codes</p><button class="btn secondary small" onclick="showPage('faults')">Open</button></div>
+<div class="card"><div class="emoji">📚</div><h3>Study Notes</h3><p>Short learning notes</p><button class="btn secondary small" onclick="showPage('learn')">Open</button></div>
+<div class="card"><div class="emoji">🔖</div><h3>Saved</h3><p>ඔයා save කළ දේ</p><button class="btn secondary small" onclick="showPage('saved')">Open</button></div>
 </div>
+</section>
+<section id="search" class="page hide panel"><div class="section-head"><h2>Search Results</h2><p>Local learning library</p></div><input id="searchInput" placeholder="Topic, code, keyword..." oninput="renderSearch(this.value)"><div id="searchResults" class="card" style="margin-top:12px"></div></section>
+<section id="learn" class="page hide panel"><div class="section-head"><h2>Learning Library</h2><p>Short notes • Bilingual</p></div><div class="chips" id="learnChips"></div><div id="learnResults" class="card"></div></section>
+<section id="tools" class="page hide panel"><div class="section-head"><h2>Technical Calculators</h2><p>Basic learning tools</p></div><div class="card stack"><h3>⚡ Ohm's Law Calculator</h3><p class="muted">V = I × R • Voltage = Current × Resistance</p><label>Known value</label><select id="calcMode" onchange="updateCalcMode()"><option value="vr">Voltage (V) and Resistance (Ω) → Current</option><option value="ir">Current (A) and Resistance (Ω) → Voltage</option><option value="vi">Voltage (V) and Current (A) → Resistance</option></select><div class="two"><div><label id="labelA">Voltage (V)</label><input id="valA" type="number" step="any" placeholder="Enter value"></div><div><label id="labelB">Resistance (Ω)</label><input id="valB" type="number" step="any" placeholder="Enter value"></div></div><button class="btn" onclick="calculateOhm()">Calculate</button><div id="calcResult" class="notice hide"></div></div>
+<div class="card stack" style="margin-top:12px"><h3>🔁 Unit Converter</h3><div class="two"><div><label>Value</label><input id="unitValue" type="number" value="1" step="any"></div><div><label>Conversion</label><select id="unitMode"><option value="kmmi">km → miles</option><option value="mkm">miles → km</option><option value="cF">°C → °F</option><option value="Fc">°F → °C</option><option value="kwhp">kW → HP</option><option value="hpkw">HP → kW</option><option value="barpsi">bar → PSI</option><option value="psibar">PSI → bar</option></select></div></div><button class="btn" onclick="convertUnit()">Convert</button><div id="unitResult" class="notice hide"></div></div>
+</section>
+<section id="faults" class="page hide panel"><div class="section-head"><h2>Automotive Fault Finder</h2><p>Common OBD-II codes</p></div><div class="card stack"><label>OBD-II code</label><input id="faultCode" placeholder="උදා: P0300" autocapitalize="characters"><button class="btn" onclick="findFault()">Find Code</button><div id="faultResult"></div><p class="muted">මෙය සාමාන්‍ය අධ්‍යාපනික තොරතුරු පමණයි. Code එකකින් පමණක් parts මාරු කරන්න එපා; vehicle-specific service manual සහ live diagnosis භාවිතා කරන්න.</p></div></section>
+<section id="saved" class="page hide panel"><div class="section-head"><h2>Saved Items</h2><p>This device only</p></div><div id="savedResults" class="card"></div></section>
+<section id="about" class="page hide panel"><div class="section-head"><h2>About TECH HUB LK</h2></div><div class="card"><p>TECH HUB LK යනු Technical College සිසුන්ට technical concepts සොයාගැනීමට, revision කිරීමට සහ basic calculations සඳහා හදපු learning app prototype එකකි.</p><p class="muted">Version 1.0 • Sinhala + English Technical Terms</p><div class="notice">Safety: Vehicle repair, mains electricity, welding, refrigeration වැනි වැඩවලදී පුහුණු උපදේශකයෙකුගේ අධීක්ෂණය සහ නිසි safety procedure අනුගමනය කරන්න.</div><p>දැනට ඇති notes සහ code descriptions සීමිත sample library එකකි. සියලු course notes, official past papers හෝ live vehicle diagnostics ස්වයංක්‍රීයව මෙහි ඇතුළත් වී නැත.</p></div></section>
+<footer>TECH HUB LK • Built for technical learners in Sri Lanka</footer>
+</div>
+<nav>
+<button class="active" data-page="home" onclick="showPage('home',this)"><span>⌂</span>Home</button>
+<button data-page="search" onclick="showPage('search',this)"><span>⌕</span>Search</button>
+<button data-page="learn" onclick="showPage('learn',this)"><span>📚</span>Learn</button>
+<button data-page="tools" onclick="showPage('tools',this)"><span>⚙</span>Tools</button>
+<button data-page="saved" onclick="showPage('saved',this)"><span>🔖</span>Saved</button>
+</nav>
 <script>
-"use strict";
-let device=null, server=null, txChar=null, rxChar=null, rxBuffer="", pending=[], pollTimer=null, liveRunning=false;
-const $=id=>document.getElementById(id);
-const UUIDS={
-  nusService:"6e400001-b5a3-f393-e0a9-e50e24dcca9e",
-  nusRx:"6e400003-b5a3-f393-e0a9-e50e24dcca9e", // notify from adapter
-  nusTx:"6e400002-b5a3-f393-e0a9-e50e24dcca9e", // write to adapter
-  ffe0:"0000ffe0-0000-1000-8000-00805f9b34fb",
-  ffe1:"0000ffe1-0000-1000-8000-00805f9b34fb",
-  fff0:"0000fff0-0000-1000-8000-00805f9b34fb",
-  fff1:"0000fff1-0000-1000-8000-00805f9b34fb"
+const categories=[
+{key:"auto",icon:"🚗",name:"Automobile Technology",desc:"Engine, EFI, OBD-II, brakes, alignment"},
+{key:"electrical",icon:"⚡",name:"Electrical Technology",desc:"Voltage, wiring, motors, safety"},
+{key:"electronics",icon:"🔌",name:"Electronics",desc:"Components, circuits, sensors"},
+{key:"ict",icon:"💻",name:"ICT & Computer",desc:"PC repair, networking, coding"},
+{key:"mechanical",icon:"⚙️",name:"Mechanical & Manufacturing",desc:"Machines, measurements, materials"},
+{key:"welding",icon:"🧑‍🏭",name:"Welding & Fabrication",desc:"Processes, joints, workshop safety"},
+{key:"hvac",icon:"❄️",name:"A/C & Refrigeration",desc:"HVAC concepts and troubleshooting"},
+{key:"construction",icon:"🏗️",name:"Construction & Civil",desc:"Materials, measurements, drawings"},
+{key:"mechatronics",icon:"🤖",name:"Mechatronics",desc:"Sensors, PLC, control systems"},
+{key:"renewable",icon:"☀️",name:"Renewable Energy",desc:"Solar PV and energy basics"}
+];
+const notes=[
+{cat:"auto",title:"OBD-II කියන්නේ මොකක්ද?",tags:"OBD OBD-II diagnostic scanner",body:"OBD-II (On-Board Diagnostics II) යනු වාහනයේ engine/emissions පද්ධතියේ faults ගැන diagnostic trouble codes (DTCs) ලබාගැනීමට භාවිතා කරන standard එකකි. Scan tool එකක් code එක කියවුවත්, code එකෙන් පමණක් faulty part එක තහවුරු නොවේ. Freeze-frame data, wiring, connectors සහ service information පරීක්ෂා කරන්න."},
+{cat:"auto",title:"P0300 — Random/Multiple Cylinder Misfire",tags:"P0300 engine misfire",body:"අර්ථය: Random/Multiple Cylinder Misfire Detected. හැකි හේතු: ignition coil/spark plug ගැටලු, fuel delivery issue, vacuum leak, compression problem හෝ sensor/data issue. ආරම්භක පරීක්ෂණ: codes සහ freeze-frame save කරන්න; intake leaks, plugs/coils, fuel trim සහ manufacturer procedure පරීක්ෂා කරන්න. Flashing check-engine light එකක් නම් catalytic converter හානි විය හැකි නිසා drive කිරීම සීමා කර technician කෙනෙකුගෙන් පරීක්ෂා කරගන්න."},
+{cat:"auto",title:"P0420 — Catalyst System Efficiency Below Threshold",tags:"P0420 catalytic converter oxygen sensor",body:"මෙම code එක catalyst system efficiency threshold එකට අඩු බව ECU එක හඳුනාගත් බව පෙන්වයි. හේතු catalyst, exhaust leak, oxygen/A/F sensor response, engine misfire හෝ fuel-control issue විය හැක. Code එක පමණක් නිසා catalytic converter එක මාරු නොකර exhaust leaks, sensor data සහ engine condition පළමුව පරීක්ෂා කරන්න."},
+{cat:"auto",title:"Wheel Alignment: Toe, Camber, Caster",tags:"wheel alignment toe camber caster",body:"Toe: ඉහළින් බැලූ විට රෝද ඉදිරි දාර එකිනෙකට ඇතුළට/පිටතට යොමුවීම. Camber: ඉදිරියෙන් බැලූ විට රෝදයේ ඉහළ කොටස ඇතුළට/පිටතට ඇලවීම. Caster: පැත්තෙන් බැලූ විට steering axis එකේ ඉදිරි/පසු ඇලවීම. නිවැරදි specification vehicle model අනුව වෙනස් වන නිසා manufacturer data භාවිතා කරන්න."},
+{cat:"electrical",title:"Ohm's Law — V = I × R",tags:"voltage current resistance ohms law",body:"Ohm's Law අනුව Voltage (V) = Current (I) × Resistance (R). Current = V/R. Resistance = V/I. Units: V = volt, I = ampere (A), R = ohm (Ω). මෙම සරල සම්බන්ධය ohmic components සඳහා යොදාගන්න; සියලු electronic devices එකම ආකාරයෙන් හැසිරෙන්නේ නැත."},
+{cat:"electrical",title:"Multimeter එකෙන් Voltage මැනීම",tags:"multimeter voltage measure electrical",body:"Meter එකේ correct function සහ range තෝරන්න. Voltage මැනීමේදී meter leads circuit එකට parallel ලෙස සම්බන්ධ කරයි. Current මැනීමට වෙනස් connection method එකක් අවශ්‍ය වන අතර meter එක parallel ලෙස current mode එකෙන් සම්බන්ධ කිරීම short circuit හා injury ඇති කළ හැක. Mains voltage වැඩ සඳහා qualified supervision සහ appropriate PPE අවශ්‍යයි."},
+{cat:"electrical",title:"Electrical Safety Basics",tags:"safety electricity lockout",body:"Power isolate කරන්න, lockout/tagout procedure අනුගමනය කරන්න, rated test instrument එකක් භාවිතා කර de-energized බව verify කරන්න. Capacitors වල charge ඉතිරි විය හැක. Live mains work තනිව නොකර පුහුණු qualified technician කෙනෙකුගේ අධීක්ෂණය ලබාගන්න."},
+{cat:"electronics",title:"Resistor Colour Code — Basics",tags:"resistor colour code electronics",body:"සාමාන්‍ය 4-band resistor එකක පළමු band දෙක significant digits, තුන්වැනි band multiplier, හතරවැනි band tolerance වේ. Colour mapping සහ tolerance නිවැරදිව කියවීමට resistor colour-code chart එකක් භාවිතා කරන්න; 5-band/6-band resistors සඳහා bands වැඩිය."},
+{cat:"ict",title:"Computer Won't Turn On — First Checks",tags:"PC computer repair no power troubleshooting",body:"1) Wall socket සහ power cable පරීක්ෂා කරන්න. 2) Laptop charger/indicator සහ compatible known-good charger test කරන්න. 3) Desktop එකක PSU switch සහ power connections පරීක්ෂා කරන්න (unplug first). 4) Beep/LED codes සටහන් කරන්න. PSU එක විවෘත නොකරන්න; ඇතුළත dangerous voltage රැඳී තිබිය හැක."},
+{cat:"ict",title:"IP Address සහ Router Basics",tags:"IP address networking router DHCP",body:"IP address එක network එකක device එක හඳුනාගැනීමට භාවිතා වේ. Router එක networks අතර traffic route කරයි. DHCP සේවාව සාමාන්‍යයෙන් devices වලට IP configuration ලබාදෙයි. Local IP, gateway සහ DNS වෙනස් කාර්යයන් ඉටු කරයි."},
+{cat:"mechanical",title:"Vernier Caliper — Reading Basics",tags:"vernier caliper measurement",body:"පළමුව zero error පරීක්ෂා කරන්න. Main scale reading සහ vernier scale coincidence අනුව reading ගන්න. Instrument resolution සහ calibration ගැන සැලකිලිමත් වන්න. වැඩි නිරවද්‍යතාව අවශ්‍ය විට micrometer හෝ specified measuring tool භාවිතා කරන්න."},
+{cat:"welding",title:"Welding Safety",tags:"welding PPE arc eye safety",body:"Welding helmet එකේ සුදුසු shade, gloves, flame-resistant clothing සහ ventilation භාවිතා කරන්න. Arc light ඇස් හා සමට හානි කරයි. Flammable materials ඉවත් කරන්න; cylinders නිසි ලෙස secure කරන්න. Coated metals හෝ confined spaces සඳහා විශේෂ risk assessment අවශ්‍යයි."},
+{cat:"hvac",title:"Refrigeration Cycle — Basic",tags:"refrigeration compressor condenser evaporator",body:"Basic vapour-compression cycle එකේ compressor, condenser, expansion device සහ evaporator ඇතුළත් වේ. Refrigerant handling සහ pressure testing සඳහා නිසි පුහුණුව, gauges, PPE සහ applicable environmental/safety rules අවශ්‍යයි. Refrigerant වායුගෝලයට මුදා නොහරින්න."},
+{cat:"mechatronics",title:"Sensor, Actuator, Controller",tags:"sensor actuator controller PLC",body:"Sensor එක physical condition එක මනිනවා; controller එක input අනුව logic/process තීරණය කරනවා; actuator එක physical action එකක් කරනවා. PLC industrial automation සඳහා භාවිතා වන programmable controller එකකි."},
+{cat:"renewable",title:"Solar PV System — Main Parts",tags:"solar PV panel inverter battery charge controller",body:"Common parts: PV modules, mounting, DC isolator/protection, inverter, cables and (where used) battery/charge controller. Correct design depends on load, site, shading, voltage and local electrical codes. Grid-connected installation qualified personnel විසින් කළ යුතුය."}
+];
+const faultCodes={
+"P0300":{title:"Random/Multiple Cylinder Misfire Detected",body:"Ignition, fuel delivery, vacuum leak, compression හෝ sensor/data ගැටලුවක් විය හැක. Freeze-frame සහ live data පරීක්ෂා කර manufacturer procedure අනුගමනය කරන්න."},
+"P0171":{title:"System Too Lean (Bank 1)",body:"Intake/vacuum leak, MAF sensor contamination/fault, low fuel pressure හෝ exhaust leak වැනි හේතු තිබිය හැක. Fuel trims සහ air/fuel data පරීක්ෂා කරන්න."},
+"P0420":{title:"Catalyst System Efficiency Below Threshold (Bank 1)",body:"Catalyst efficiency අඩු බව ECU එක හඳුනාගෙන ඇත. Exhaust leaks, O2/A/F sensor data සහ misfire/fuel-control issues පරීක්ෂා කරන්න. Code එක පමණක් මත catalyst එක මාරු නොකරන්න."},
+"P0128":{title:"Coolant Thermostat — Coolant Temperature Below Regulating Temperature",body:"Thermostat stuck open, coolant temperature sensor/circuit හෝ operating conditions හේතු විය හැක. Engine cold වෙද්දී coolant level පරීක්ෂා කරන්න; උණු radiator cap එක විවෘත නොකරන්න."},
+"P0442":{title:"EVAP System Small Leak Detected",body:"Fuel cap seal, EVAP hoses/valves හෝ leak විය හැක. Fuel cap එක නිසි ලෙස සවි වී තිබේද බලන්න; අවශ්‍ය නම් approved smoke-test procedure භාවිතා කරන්න."},
+"P0101":{title:"Mass or Volume Air Flow Circuit Range/Performance",body:"MAF sensor, intake leaks, air filter/ducting, wiring හෝ connector issue විය හැක. Live MAF data සහ intake system පරීක්ෂා කරන්න."},
+"P0113":{title:"Intake Air Temperature Sensor 1 Circuit High Input",body:"IAT sensor/circuit open, connector හෝ wiring issue විය හැක. Wiring diagram අනුව circuit පරීක්ෂා කරන්න."},
+"P0301":{title:"Cylinder 1 Misfire Detected",body:"Cylinder 1 ignition, injector, compression හෝ wiring පරීක්ෂා කරන්න. Manufacturer cylinder numbering භාවිතා කරන්න."}
 };
-function setStatus(msg,type="warn"){const el=$("btStatus");el.textContent=msg;el.className="status "+type}
-function setConnectedUI(on){$("liveBtn").disabled=!on;$("dtcBtn").disabled=!on;$("stopBtn").disabled=!liveRunning}
-function resetMetrics(){["rpm","speed","coolant","load","throttle"].forEach(id=>$(id).textContent="—")}
-function onDisconnected(){stopLive();server=null;txChar=null;rxChar=null;device=null;setConnectedUI(false);$("protocol").textContent="—";setStatus("Adapter disconnected.", "bad")}
-async function connectOBD(){
-  if(!window.isSecureContext){setStatus("HTTPS is required for Bluetooth. Publish this site with GitHub Pages first.","bad");return}
-  if(!navigator.bluetooth){setStatus("This browser does not expose Web Bluetooth. Try a supported Android browser; iPhone Safari/Chrome usually cannot connect to BLE from webpages.","bad");return}
-  try{
-    setStatus("Choose your BLE adapter in the browser picker…");
-    device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[UUIDS.nusService,UUIDS.ffe0,UUIDS.fff0,"generic_access","device_information"]});
-    device.addEventListener("gattserverdisconnected",onDisconnected);
-    server=await device.gatt.connect();
-    let found=false, lastErr="";
-    const candidates=[
-      [UUIDS.nusService,UUIDS.nusTx,UUIDS.nusRx],
-      [UUIDS.ffe0,UUIDS.ffe1,UUIDS.ffe1],
-      [UUIDS.fff0,UUIDS.fff1,UUIDS.fff1]
-    ];
-    for(const [su,tu,ru] of candidates){
-      try{
-        const svc=await server.getPrimaryService(su);
-        const chars=await svc.getCharacteristics();
-        txChar=chars.find(c=>c.uuid===tu)||chars.find(c=>c.properties.write||c.properties.writeWithoutResponse);
-        rxChar=chars.find(c=>c.uuid===ru)||chars.find(c=>c.properties.notify||c.properties.indicate);
-        if(txChar && rxChar && (txChar.properties.write||txChar.properties.writeWithoutResponse) && (rxChar.properties.notify||rxChar.properties.indicate)){found=true;break}
-      }catch(e){lastErr=e.message}
-    }
-    if(!found)throw new Error("Connected, but no supported BLE UART characteristic pair was found. Adapter may use Classic Bluetooth or a different profile.");
-    await rxChar.startNotifications();
-    rxChar.addEventListener("characteristicvaluechanged",handleNotify);
-    setConnectedUI(true);$("protocol").textContent="BLE connected";setStatus("Connected to "+(device.name||"BLE adapter")+". Initializing ELM327…","good");
-    await sendAT("ATZ",1600); await sendAT("ATE0"); await sendAT("ATL0"); await sendAT("ATS0"); await sendAT("ATH0"); await sendAT("ATSP0");
-    $("liveStatus").textContent="Adapter initialized. Start live readings or read DTCs.";
-  }catch(e){setStatus("Connection failed: "+e.message,"bad");try{if(device&&device.gatt.connected)device.gatt.disconnect()}catch(_){};setConnectedUI(false)}
-}
-function disconnectOBD(){stopLive();try{if(device&&device.gatt.connected)device.gatt.disconnect()}catch(_){}onDisconnected()}
-function handleNotify(event){
-  const value=event.target.value; let chunk="";
-  for(let i=0;i<value.byteLength;i++)chunk+=String.fromCharCode(value.getUint8(i));
-  rxBuffer+=chunk;
-  if(rxBuffer.includes(">")){const response=rxBuffer;rxBuffer="";const p=pending.shift();if(p){clearTimeout(p.timer);p.resolve(response.replace(/>/g,"").trim())}}
-}
-function sendRaw(cmd,timeout=2500){
-  return new Promise(async(resolve,reject)=>{
-    if(!txChar||!rxChar)return reject(new Error("No adapter connection"));
-    const item={resolve,reject,timer:setTimeout(()=>{const idx=pending.indexOf(item);if(idx>=0)pending.splice(idx,1);resolve(rxBuffer.trim());rxBuffer=""},timeout)};
-    pending.push(item);
-    try{const data=new TextEncoder().encode(cmd+"\r");if(txChar.properties.writeWithoutResponse&&!txChar.properties.write)await txChar.writeValueWithoutResponse(data);else await txChar.writeValue(data)}catch(e){clearTimeout(item.timer);pending=pending.filter(x=>x!==item);reject(e)}
-  });
-}
-async function sendAT(cmd,timeout=900){try{return await sendRaw(cmd,timeout)}catch(e){return ""}}
-function cleanResponse(s){return (s||"").toUpperCase().replace(/SEARCHING\.\.\./g,"").replace(/\s/g,"").replace(/NODATA/g,"").replace(/STOPPED/g,"")}
-async function queryPID(pid){const s=await sendRaw(pid,1800);return cleanResponse(s)}
-function bytesAfterHeader(s,header){const i=s.indexOf(header);return i<0?"":s.slice(i+header.length)}
-function firstBytes(s,header,count){const h=bytesAfterHeader(s,header);return h.length>=count*2?h.slice(0,count*2):""}
-function hexByte(s,i){return parseInt(s.slice(i*2,i*2+2),16)}
-async function startLive(){
- if(!txChar)return;stopLive();liveRunning=true;$("stopBtn").disabled=false;$("liveBtn").disabled=true;
- $("liveStatus").textContent="Reading supported generic OBD-II PIDs…";
- async function tick(){
-  if(!liveRunning||!txChar)return;
-  try{
-   const r=await queryPID("010C"),b=firstBytes(r,"410C",2);if(b.length===4)$("rpm").textContent=Math.round((parseInt(b.slice(0,2),16)*256+parseInt(b.slice(2,4),16))/4);
-   const s=await queryPID("010D"),v=firstBytes(s,"410D",1);if(v.length===2)$("speed").textContent=parseInt(v,16);
-   const c=await queryPID("0105"),w=firstBytes(c,"4105",1);if(w.length===2)$("coolant").textContent=parseInt(w,16)-40;
-   const l=await queryPID("0104"),x=firstBytes(l,"4104",1);if(x.length===2)$("load").textContent=Math.round(parseInt(x,16)*100/255)+"%";
-   const t=await queryPID("0111"),y=firstBytes(t,"4111",1);if(y.length===2)$("throttle").textContent=Math.round(parseInt(y,16)*100/255)+"%";
-   $("liveStatus").textContent="Last request: "+new Date().toLocaleTimeString()+" · unsupported readings remain —.";
-  }catch(e){$("liveStatus").textContent="Reading error: "+e.message}
-  if(liveRunning)pollTimer=setTimeout(tick,1200);
- }
- tick();
-}
-function stopLive(){liveRunning=false;if(pollTimer)clearTimeout(pollTimer);pollTimer=null;$("liveBtn").disabled=!txChar;$("stopBtn").disabled=true}
-function parseDTCs(response){
- const s=cleanResponse(response);const idx=s.indexOf("43");if(idx<0)return [];
- const data=s.slice(idx+2);const codes=[];
- for(let i=0;i+4<=data.length;i+=4){const a=parseInt(data.slice(i,i+2),16),b=parseInt(data.slice(i+2,i+4),16);if(Number.isNaN(a)||Number.isNaN(b)||a===0&&b===0)continue;const type=["P","C","B","U"][(a>>6)&3];const digit=(a>>4)&3;const code=type+digit+(a&15).toString(16).toUpperCase()+b.toString(16).padStart(2,"0").toUpperCase();codes.push(code)}
- return [...new Set(codes)];
-}
-const codeInfo={
-"P0100":"Mass or volume air-flow circuit fault. Inspect the MAF sensor circuit, connector, wiring and intake system.",
-"P0171":"System too lean (Bank 1). Possible causes include intake/vacuum leaks, fuel delivery issues or sensor faults.",
-"P0300":"Random/multiple cylinder misfire detected. Possible ignition, fuel, compression or air-metering problems.",
-"P0301":"Cylinder 1 misfire detected. Check ignition, injector, compression and related wiring.",
-"P0420":"Catalyst system efficiency below threshold (Bank 1). Confirm with further tests before replacing parts.",
-"P0442":"EVAP system small leak detected. Check fuel cap and evaporative-emissions hoses/valves.",
-"P0455":"EVAP system large leak detected. Inspect fuel cap and evaporative-emissions system.",
-"P0500":"Vehicle speed sensor fault. Inspect sensor, wiring and related modules.",
-"P0128":"Coolant thermostat/coolant temperature below regulating temperature. Check coolant level, thermostat and sensor data.",
-"P0401":"Exhaust gas recirculation flow insufficient. Check EGR passages, valve and control circuit."
-};
-function lookupCode(){
- const c=$("codeInput").value.trim().toUpperCase();const out=$("codeResult");
- if(!/^[PBCU][0-3][0-9A-F]{3}$/.test(c)){out.textContent="Enter a valid-looking 5-character OBD-II code, e.g. P0301.";return}
- out.textContent=(codeInfo[c]||"No explanation is included in this small built-in list. Search the exact code for your vehicle make/model or consult a technician.")+"\n\nThis is a general explanation, not a confirmed diagnosis. Manufacturer-specific meanings may differ.";
-}
-async function readDTCs(){
- if(!txChar)return;
- $("dtcResult").textContent="Requesting stored powertrain codes (service 03)…";
- try{const response=await queryPID("03");const codes=parseDTCs(response);
- if(!codes.length){$("dtcResult").textContent="No generic stored codes were decoded, or the adapter/vehicle returned an unsupported response.\nRaw response: "+(response||"(empty)")+"\nThis does not prove that all vehicle systems are fault-free.";return}
- $("dtcResult").textContent=codes.map(c=>c+" — "+(codeInfo[c]||"Code detected; look up the exact vehicle-specific definition and verify with tests.")).join("\n\n");
- }catch(e){$("dtcResult").textContent="Could not read codes: "+e.message}
-}
-async function decodeVIN(){
- const vin=$("vin").value.trim().toUpperCase(),year=$("vinYear").value.trim();
- if(!/^[A-HJ-NPR-Z0-9]{17}$/.test(vin)){$("vinResult").textContent="Enter a 17-character VIN. I, O and Q are not valid VIN characters.";return}
- if(year&&!/^\d{4}$/.test(year)){$("vinResult").textContent="Model year must be four digits, or leave it blank.";return}
- $("vinResult").textContent="Looking up VIN via NHTSA vPIC…";
- try{
-  const url="https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/"+encodeURIComponent(vin)+"?format=json"+(year?"&modelyear="+encodeURIComponent(year):"");
-  const res=await fetch(url);if(!res.ok)throw new Error("Lookup service returned HTTP "+res.status);
-  const data=await res.json();const d=data.Results&&data.Results[0];if(!d)throw new Error("No result returned");
-  const fields=[["Make",d.Make],["Model",d.Model],["Model year",d.ModelYear],["Body class",d.BodyClass],["Vehicle type",d.VehicleType],["Engine",d.DisplacementL?d.DisplacementL+" L":""],["Fuel",d.FuelTypePrimary],["Plant country",d.PlantCountry],["Manufacturer",d.Manufacturer]].filter(x=>x[1]);
-  $("vinResult").textContent=fields.length?fields.map(x=>x[0]+": "+x[1]).join("\n"):"No useful details returned for this VIN. The database may not cover this vehicle.";
- }catch(e){$("vinResult").textContent="VIN lookup failed: "+e.message+"\nCheck your internet connection and try again. The public database may not cover every Sri Lankan-market vehicle."}
-}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function getSaved(){try{return JSON.parse(localStorage.getItem("thlk_saved")||"[]")}catch(e){return []}}
+function isSaved(title){return getSaved().some(x=>x.title===title)}
+function saveItem(item){let arr=getSaved();if(arr.some(x=>x.title===item.title)){arr=arr.filter(x=>x.title!==item.title)}else{arr.unshift(item)}localStorage.setItem("thlk_saved",JSON.stringify(arr));renderSaved();renderLearn(activeCat);renderSearch(document.getElementById("searchInput")?.value||"")}
+function saveButton(item){return `<button class="btn secondary small" onclick='saveItem(${JSON.stringify(item).replace(/'/g,"&#39;")})'>${isSaved(item.title)?"✓ Saved":"🔖 Save"}</button>`}
+function renderCategories(){document.getElementById("categoryGrid").innerHTML=categories.map(c=>`<div class="card"><div class="emoji">${c.icon}</div><h3>${c.name}</h3><p>${c.desc}</p><button class="btn secondary small" onclick="openCategory('${c.key}')">Explore</button></div>`).join("")}
+function noteCard(n){return `<div class="result"><span class="tag">${esc(categories.find(c=>c.key===n.cat)?.name||n.cat)}</span><h3>${esc(n.title)}</h3><p>${esc(n.body)}</p><div style="margin-top:9px">${saveButton(n)}</div></div>`}
+let activeCat="all";
+function renderLearn(cat="all"){activeCat=cat;document.getElementById("learnChips").innerHTML=`<button class="chip ${cat==="all"?"active":""}" onclick="renderLearn('all')">All Topics</button>`+categories.map(c=>`<button class="chip ${cat===c.key?"active":""}" onclick="renderLearn('${c.key}')">${c.icon} ${c.name}</button>`).join("");let arr=cat==="all"?notes:notes.filter(n=>n.cat===cat);document.getElementById("learnResults").innerHTML=arr.length?arr.map(noteCard).join(""):`<div class="empty">මේ අංශයට notes තවම එකතු කරලා නැහැ.</div>`}
+function openCategory(cat){showPage("learn");renderLearn(cat)}
+function showPage(id,btn){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("hide",p.id!==id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(id==="saved")renderSaved();if(id==="learn")renderLearn(activeCat);if(id==="search")renderSearch(document.getElementById("searchInput").value);window.scrollTo({top:0,behavior:"smooth"})}
+function doSearch(){let q=document.getElementById("mainSearch").value;showPage("search");document.getElementById("searchInput").value=q;renderSearch(q)}
+function renderSearch(q){let el=document.getElementById("searchResults");if(!el)return;let s=(q||"").trim().toLowerCase();let arr=notes.filter(n=>(n.title+" "+n.tags+" "+n.body+" "+(categories.find(c=>c.key===n.cat)?.name||"")).toLowerCase().includes(s));if(!s)arr=notes.slice(0,6);el.innerHTML=arr.length?arr.map(noteCard).join(""):`<div class="empty">ප්‍රතිඵල හමු වුණේ නැහැ. වෙනත් keyword එකක් භාවිතා කරන්න.</div>`}
+function renderSaved(){let el=document.getElementById("savedResults");let arr=getSaved();el.innerHTML=arr.length?arr.map(noteCard).join(""):`<div class="empty">තවම save කරපු items නැහැ.<br>Learn හෝ Search වෙතින් 🔖 Save ඔබන්න.</div>`}
+function updateCalcMode(){let m=document.getElementById("calcMode").value;document.getElementById("labelA").textContent=m==="vr"?"Voltage (V)":m==="ir"?"Current (A)":"Voltage (V)";document.getElementById("labelB").textContent=m==="vr"?"Resistance (Ω)":m==="ir"?"Resistance (Ω)":"Current (A)";document.getElementById("calcResult").classList.add("hide")}
+function calculateOhm(){let a=Number(document.getElementById("valA").value),b=Number(document.getElementById("valB").value),m=document.getElementById("calcMode").value,out=document.getElementById("calcResult");let result,unit;if(document.getElementById("valA").value===""||document.getElementById("valB").value===""||!Number.isFinite(a)||!Number.isFinite(b)){result="Valid values දෙකක් ඇතුළත් කරන්න."}else if((m==="vr"&&b===0)||(m==="vi"&&b===0)){result="Zero වලින් බෙදන්න බැහැ."}else{if(m==="vr"){result=a/b;unit="A (Current)"}else if(m==="ir"){result=a*b;unit="V (Voltage)"}else{result=a/b;unit="Ω (Resistance)"}result=`Result: ${Number(result.toPrecision(6))} ${unit}`}out.textContent=result;out.classList.remove("hide")}
+function convertUnit(){let v=Number(document.getElementById("unitValue").value),m=document.getElementById("unitMode").value,labels={kmmi:"miles",mkm:"km",cF:"°F",Fc:"°C",kwhp:"HP",hpkw:"kW",barpsi:"PSI",psibar:"bar"};let formulas={kmmi:v*0.621371,mkm:v*1.609344,cF:v*9/5+32,Fc:(v-32)*5/9,kwhp:v*1.341022,hpkw:v*0.7457,barpsi:v*14.5038,psibar:v/14.5038};let out=document.getElementById("unitResult");out.textContent=Number.isFinite(v)?`Result: ${Number(formulas[m].toPrecision(7))} ${labels[m]}`:"Valid number එකක් ඇතුළත් කරන්න.";out.classList.remove("hide")}
+function findFault(){let code=document.getElementById("faultCode").value.trim().toUpperCase().replace(/\s/g,""),el=document.getElementById("faultResult");if(!code){el.innerHTML='<div class="notice">OBD-II code එකක් ඇතුළත් කරන්න.</div>';return}let f=faultCodes[code];if(f){let item={cat:"auto",title:code+" — "+f.title,tags:code,body:f.body};el.innerHTML=`<div class="result"><span class="tag">OBD-II ${esc(code)}</span><h3>${esc(f.title)}</h3><p>${esc(f.body)}</p><div style="margin-top:9px">${saveButton(item)}</div></div>`}else{el.innerHTML=`<div class="notice">මෙම prototype library එකේ ${esc(code)} code එක නැහැ. Vehicle-specific scan tool/service manual එකෙන් verify කරන්න.</div>`}}
+renderCategories();renderLearn();renderSaved();
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
 </script>
 </body>
 </html>

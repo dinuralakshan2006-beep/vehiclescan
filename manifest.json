@@ -1,0 +1,11 @@
+{
+  "name": "TECH HUB LK - Technical Learning",
+  "short_name": "TECH HUB LK",
+  "description": "Sinhala + English technical learning hub for Technical College students in Sri Lanka.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "lang": "si"
+}
